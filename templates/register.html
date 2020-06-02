@@ -22,7 +22,7 @@
 
 <!-- custom style -->
 <link href="{{ url_for('static', filename='css/ui.css') }}" rel="stylesheet" type="text/css">
-<link href=""{{ url_for('static', filename='css/responsive.css') }}"" rel="stylesheet" media="only screen and (max-width: 1200px)">
+<link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet" media="only screen and (max-width: 1200px)">
 
 <!-- custom javascript -->
 <script>
@@ -76,8 +76,8 @@
 				<div class="text">
 					<span class="text-muted">Welcome!</span>
 					<div> 
-						<a href="#">Sign in</a> |  
-						<a href="#"> Register</a>
+						<a href="{{ url_for('login') }}">Sign in</a> |  
+						<a href="{{ url_for('register') }}">Register</a>
 					</div>
 				</div>
 			</div>
@@ -101,8 +101,18 @@
 		<form>
 				<div class="form-row">
 					<div class="col form-group">
-						<label>First name</label>
-					  	<input type="text" class="form-control" placeholder="">
+						{{ form.username.label(class="form-control-label") }}
+
+						{% if form.username.errors %}
+							{{ form.username(class="form-control form-control-lg is-invalid") }}
+							<div class="invalid-feedback">
+								{% for error in form.username.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+							{{ form.username(class="form-control form-control-lg") }}
+						{% endif %}
 					</div> <!-- form-group end.// -->
 					<div class="col form-group">
 						<label>Last name</label>
