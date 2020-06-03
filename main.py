@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, flash, url_for, session
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, ValidationError, FileField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, ValidationError, FileField, RadioField, SelectField
 from flask_wtf.file import FileRequired, FileAllowed
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 from flask_sqlalchemy import SQLAlchemy
@@ -49,12 +49,20 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(min=6)])
+    firstName = StringField('First name', validators=[ DataRequired() ])
+    lastName = StringField('Last name', validators=[ DataRequired() ])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    confirmPassword = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
-    user_img = FileField('User Image File', validators=[ FileRequired(), FileAllowed(['jpg', 'png'])])
-    submit = SubmitField('Sign Up')
+    password = PasswordField('Create password', validators=[DataRequired()])
+    confirmPassword = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    genderMale = RadioField('gender', validators=[DataRequired()])
+    genderFemale = RadioField('gender', validators=[DataRequired()])
+    address = StringField('Address', validators=[ DataRequired() ])
+    address2 = StringField('Address 2 (Optional)', validators=[ DataRequired() ])
+    city = StringField('City', validators=[ DataRequired() ])
+    zipCode = StringField('Zip', validators=[ DataRequired() ])
+    country = SelectField('Country', choices=[('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')])
+    submitButton = SubmitField('Register')
+    agreeTerms = BooleanField('', )
 
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()

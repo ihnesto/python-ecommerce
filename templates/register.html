@@ -101,37 +101,77 @@
 		<form>
 				<div class="form-row">
 					<div class="col form-group">
-						{{ form.username.label(class="form-control-label") }}
+						{{ form.firstName.label(class="form-control-label") }}
 
-						{% if form.username.errors %}
-							{{ form.username(class="form-control form-control-lg is-invalid") }}
+						{% if form.firstName.errors %}
+							{{ form.firstName(class="form-control form-control-lg is-invalid") }}
 							<div class="invalid-feedback">
-								{% for error in form.username.errors %}
+								{% for error in form.firstName.errors %}
 									<span>{{ error }}</span>
 								{% endfor %}
 							</div>
 						{% else %}
-							{{ form.username(class="form-control form-control-lg") }}
+							{{ form.firstName(class="form-control form-control-lg") }}
 						{% endif %}
 					</div> <!-- form-group end.// -->
 					<div class="col form-group">
-						<label>Last name</label>
-					  	<input type="text" class="form-control" placeholder="">
+						{{ form.lastName.label(class="form-control-label") }}
+
+						{% if form.lastName.errors %}
+							{{ form.lastName(class="form-control form-control-lg is-invalid") }}
+							<div class="invalid-feedback">
+								{% for error in form.lastName.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+							{{ form.lastName(class="form-control form-control-lg") }}
+						{% endif %}
 					</div> <!-- form-group end.// -->
 				</div> <!-- form-row end.// -->
 				<div class="form-group">
-					<label>Email</label>
-					<input type="email" class="form-control" placeholder="">
+						{{ form.email.label(class="form-control-label") }}
+
+						{% if form.email.errors %}
+							{{ form.email(class="form-control form-control-lg is-invalid") }}
+							<div class="invalid-feedback">
+								{% for error in form.email.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+							{{ form.email(class="form-control form-control-lg") }}
+						{% endif %}
 					<small class="form-text text-muted">We'll never share your email with anyone else.</small>
 				</div> <!-- form-group end.// -->
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label>Create password</label>
-					    <input class="form-control" type="password">
-					</div> <!-- form-group end.// --> 
+						{{ form.password.label(class="form-control-label") }}
+
+						{% if form.password.errors %}
+							{{ form.password(class="form-control form-control-lg is-invalid") }}
+							<div class="invalid-feedback">
+								{% for error in form.password.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+							{{ form.password(class="form-control form-control-lg") }}
+						{% endif %}
+					</div> <!-- form-group end.// -->
 					<div class="form-group col-md-6">
-						<label>Repeat password</label>
-					    <input class="form-control" type="password">
+						{{ form.confirmPassword.label(class="form-control-label") }}
+
+						{% if form.confirmPassword.errors %}
+							{{ form.confirmPassword(class="form-control form-control-lg is-invalid") }}
+							<div class="invalid-feedback">
+								{% for error in form.confirmPassword.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+							{{ form.confirmPassword(class="form-control form-control-lg") }}
+						{% endif %}
 					</div> <!-- form-group end.// -->  
 				</div>
 				<div class="form-group">
@@ -145,22 +185,65 @@
 					</label>
 				</div> <!-- form-group end.// -->
 				<div class="form-group">
-					<label>Address</label>
-					<input type="text" class="form-control" placeholder="">
-				</div> <!-- form-group end.// -->
+						{{ form.address.label(class="form-control-label") }}
+
+						{% if form.address.errors %}
+							{{ form.address(class="form-control form-control-lg is-invalid") }}
+							<div class="invalid-feedback">
+								{% for error in form.address.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+							{{ form.address(class="form-control form-control-lg") }}
+						{% endif %}
+					</div> <!-- form-group end.// -->
 				<div class="form-group">
-					<label>Address 2 (Optional)</label>
-					<input type="text" class="form-control" placeholder="">
+						{{ form.address2.label(class="form-control-label") }}
+
+						{% if form.address2.errors %}
+							{{ form.address2(class="form-control form-control-lg is-invalid") }}
+							<div class="invalid-feedback">
+								{% for error in form.address2.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+							{{ form.address2(class="form-control form-control-lg") }}
+						{% endif %}
 				</div> <!-- form-group end.// -->
 				<div class="form-row">
 					<div class="form-group col-md-8">
-					  <label>City</label>
-					  <input type="text" class="form-control">
+						
+						{{ form.city.label(class="form-control-label") }}
+
+						{% if form.city.errors %}
+							{{ form.city(class="form-control form-control-lg is-invalid") }}
+							<div class="invalid-feedback">
+								{% for error in form.city.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+							{{ form.city(class="form-control form-control-lg") }}
+						{% endif %}
+					
 					</div> <!-- form-group end.// -->
 					<div class="form-group col-md-4">
-						<label>Zip</label>
-						<input type="text" class="form-control">
-					  </div> <!-- form-group end.// -->
+						{{ form.zipCode.label(class="form-control-label") }}
+
+						{% if form.zipCode.errors %}
+							{{ form.zipCode(class="form-control form-control-lg is-invalid") }}
+							<div class="invalid-feedback">
+								{% for error in form.zipCode.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+							{{ form.zipCode(class="form-control form-control-lg") }}
+						{% endif %}
+					</div> <!-- form-group end.// -->
+					
 				</div> <!-- form-row.// -->
 				<div class="form-group">
 					<label>Country</label>
@@ -174,10 +257,23 @@
 					</select>
 				</div> <!-- form-group end.// -->
 			    <div class="form-group">
-			        <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+					{{ form.submitButton(class="btn btn-primary btn-block") }}
 			    </div> <!-- form-group// -->      
-			    <div class="form-group"> 
-		            <label class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked=""> <div class="custom-control-label"> I am agree with <a href="#">terms and contitions</a>  </div> </label>
+			    <div class="form-group">
+					{{ form.agreeTerms.label(class="custom-control custom-checkbox") }}
+					
+						{% if form.agreeTerms.errors %}
+							{{ form.agreeTerms(class="is-invalid custom-control-input", checked="") }}
+							<div class="invalid-feedback">
+								{% for error in form.agreeTerms.errors %}
+									<span>{{ error }}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+							{{ form.agreeTerms(class="custom-control-input", checked="") }}
+						{% endif %}
+					 
+					<div class="custom-control-label"> I am agree with <a href="#">terms and contitions</a></div>
 		        </div> <!-- form-group end.// -->           
 			</form>
 		</article><!-- card-body.// -->
